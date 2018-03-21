@@ -24,7 +24,7 @@ task jlink(type: Exec, dependsOn: ['clean', 'jar']) {
 
     commandLine "${javaHome}/bin/jlink", '--module-path', "libs${File.pathSeparatorChar}${javaHome}/jmods",
             '--strip-debug', '--no-header-files', '--no-man-pages', '--compress', '2',
-            '--add-modules', 'org.rognan.jlink',
+            '--add-modules', "${moduleName}",
             '--launcher', "launcher=${moduleName}/${moduleLaunchPoint}",
             '--output', 'dist'
 }
