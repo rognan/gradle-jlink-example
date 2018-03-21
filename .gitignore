@@ -1,0 +1,22 @@
+!gradle-wrapper.jar
+
+*.log
+hs_err_pid*
+
+# Java
+*.class
+
+# Archive
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# Gradle
+.gradle
+/build/
+/buildSrc/build/
+gradle-app.setting
+.gradletasknamecache
