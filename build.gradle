@@ -1,35 +1,35 @@
 apply plugin: 'java'
 
 group 'org.rognan'
-version '1.0.0'
+version '2.0.0'
 
-targetCompatibility = '1.9'
-sourceCompatibility = '1.9'
+targetCompatibility = '11'
+sourceCompatibility = '11'
 
 ext {
-    moduleName = 'org.rognan.jlink'
-    moduleLaunchPoint = 'org.rognan.Application'
+  moduleName = 'org.rognan.jlink'
+  moduleLaunchPoint = 'org.rognan.Application'
 }
 
 jar {
-    manifest {
-        attributes 'Main-Class': 'org.rognan.Application'
-    }
+  manifest {
+    attributes 'Main-Class': 'org.rognan.Application'
+  }
 }
 
 task jlink(type: Exec, dependsOn: ['clean', 'jar']) {
-    def javaHome = System.properties.'java.home'
+  def javaHome = System.properties.'java.home'
 
-    workingDir 'build'
+  workingDir 'build'
 
-    commandLine "${javaHome}/bin/jlink", '--module-path', "libs${File.pathSeparatorChar}${javaHome}/jmods",
-            '--strip-debug', '--no-header-files', '--no-man-pages', '--compress', '2',
-            '--add-modules', "${moduleName}",
-            '--launcher', "launcher=${moduleName}/${moduleLaunchPoint}",
-            '--output', 'dist'
+  commandLine "${javaHome}/bin/jlink", '--module-path', "libs${File.pathSeparatorChar}${javaHome}/jmods",
+    '--strip-debug', '--no-header-files', '--no-man-pages', '--compress', '2',
+    '--add-modules', "${moduleName}",
+    '--launcher', "launch=${moduleName}/${moduleLaunchPoint}",
+    '--output', 'dist'
 }
 
-task wrapper(type: Wrapper) {
-    gradleVersion = '4.6'
-    distributionType = Wrapper.DistributionType.ALL
+wrapper {
+  gradleVersion = '5.0-milestone-1'
+  distributionType = Wrapper.DistributionType.ALL
 }
