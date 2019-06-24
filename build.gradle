@@ -28,8 +28,3 @@ task jlink(type: Exec, dependsOn: ['clean', 'jar']) {
     '--launcher', "launch=${moduleName}/${moduleLaunchPoint}",
     '--output', 'dist'
 }
-
-wrapper {
-  gradleVersion = '5.0-milestone-1'
-  distributionType = Wrapper.DistributionType.ALL
-}
