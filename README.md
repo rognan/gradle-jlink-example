@@ -1,6 +1,6 @@
 # JLink example
 
-    Use gradle to create a minimal runtime image using JLink & Java 11.
+    Use gradle to create a minimal runtime image using JLink.
 
 Build & Run:
 
