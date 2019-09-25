@@ -13,10 +13,6 @@ PONG
 
 System property 'java.home' is expected to point to a JDK
 
-```groovy
- System.properties.'java.home'
-``` 
-
 # LICENSE
 
 MIT © 2018
