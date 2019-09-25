@@ -1,0 +1,29 @@
+* text=auto
+
+# Configuration
+
+.gitconfig      text
+.gitattributes  text
+*.properties    text
+.editorconfig     text
+
+# Documentation
+
+*.txt     text
+*.md      text
+*.adoc    text
+
+# Build & IDE
+
+gradlew           text eol=lf
+gradlew.bat       text eol=crlf
+*.kts             text
+
+# Sources & scripts
+
+*.java      text  diff=java
+
+# Archives
+
+*.jar   binary
+*.zip   binary
