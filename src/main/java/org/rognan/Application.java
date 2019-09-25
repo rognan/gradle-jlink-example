@@ -1,29 +1,40 @@
 package org.rognan;
 
-import com.sun.net.httpserver.HttpServer;
-
-import java.io.OutputStream;
+import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.util.logging.Logger;
+
+import com.sun.net.httpserver.HttpExchange;
+
+import static com.sun.net.httpserver.HttpServer.create;
 
 public class Application {
-    public static void main(String[] args) throws Exception {
-        int port = 8080;
+    private static final Logger LOG = Logger.getLogger(Application.class.getName());
 
-        HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
+    public static void main(String[] args) throws IOException {
+        var port = 8080;
 
-        server.createContext("/", exchange -> {
-            String response = "PONG";
-            exchange.sendResponseHeaders(200, response.length());
-            OutputStream outputStream = exchange.getResponseBody();
-            outputStream.write(response.getBytes());
-            outputStream.close();
-        });
+        var server = create(new InetSocketAddress(port), 0)
+            .createContext("/", Application::handler)
+            .getServer();
 
-        server.setExecutor(null);
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> {
+            LOG.info("Application shutting down");
+            server.stop(0);
+        }));
+
         server.start();
 
-        System.out.println("Minimal webapp running on port " + port +
-                " powered by Java " + System.getProperty("java.version"));
+        LOG.info("Application running on port " + port +
+            " powered by Java " + System.getProperty("java.version")
+        );
+    }
 
+    private static void handler(HttpExchange exchange) throws IOException {
+        var response = "PONG";
+        exchange.sendResponseHeaders(200, response.length());
+        try (var stream = exchange.getResponseBody()) {
+            stream.write(response.getBytes());
+        }
     }
 }
