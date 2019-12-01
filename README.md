@@ -6,7 +6,7 @@ Build & Run:
 
 ```bash
 $ ./gradlew jlink
-$ ./build/dist/bin/launch
+$ ./build/image/bin/launch
 $ curl localhost:8080
 PONG
 ```

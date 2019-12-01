@@ -38,7 +38,7 @@ tasks {
       "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "2",
       "--add-modules", moduleName,
       "--launcher", "launch=$moduleName/$moduleLaunchPoint",
-      "--output", "dist"
+      "--output", "image"
     )
   }
 }
