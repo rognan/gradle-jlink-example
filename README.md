@@ -1,6 +1,6 @@
 # JLink example
 
-    Use gradle to create a minimal runtime image using JLink.
+Use Gradle to create a minimal runtime image using [JLink](https://docs.oracle.com/javase/9/tools/jlink.htm).
 
 Build & Run:
 
