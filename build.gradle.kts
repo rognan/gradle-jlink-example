@@ -1,5 +1,7 @@
 plugins {
   java
+
+  id("com.github.ben-manes.versions")
 }
 
 group = "org.rognan"
