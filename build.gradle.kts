@@ -22,6 +22,9 @@ tasks {
   }
 
   register<Exec>("jlink") {
+    group = "Build"
+    description = "Generate custom Java runtime image"
+
     dependsOn("clean", "jar")
 
     val javaHome = System.getProperty("java.home")
