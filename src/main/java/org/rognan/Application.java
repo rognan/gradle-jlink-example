@@ -2,6 +2,7 @@ package org.rognan;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
+import java.nio.charset.StandardCharsets;
 import java.util.logging.Logger;
 
 import com.sun.net.httpserver.HttpExchange;
@@ -34,7 +35,7 @@ public class Application {
         var response = "PONG";
         exchange.sendResponseHeaders(200, response.length());
         try (var stream = exchange.getResponseBody()) {
-            stream.write(response.getBytes());
+            stream.write(response.getBytes(StandardCharsets.UTF_8));
         }
     }
 }
