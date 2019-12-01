@@ -2,10 +2,11 @@ plugins {
   java
 
   id("com.github.ben-manes.versions")
+  id("net.nemerosa.versioning")
 }
 
 group = "org.rognan"
-version = "2.0.1"
+version = versioning.info.full
 
 java {
   targetCompatibility = JavaVersion.toVersion("13")
