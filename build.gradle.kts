@@ -9,8 +9,8 @@ group = "org.rognan"
 version = versioning.info.full
 
 java {
-  targetCompatibility = JavaVersion.toVersion("13")
-  sourceCompatibility = JavaVersion.toVersion("13")
+  targetCompatibility = JavaVersion.toVersion("14")
+  sourceCompatibility = JavaVersion.toVersion("14")
 }
 
 tasks {
