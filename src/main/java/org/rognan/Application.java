@@ -26,9 +26,12 @@ public class Application {
 
         server.start();
 
-        LOG.info("Application running on port " + port +
-            " powered by Java " + System.getProperty("java.version")
-        );
+        final String startupMessage = "Application running on port %d powered by %s %s"
+            .formatted(port,
+                System.getProperty("java.vendor"),
+                System.getProperty("java.version"));
+
+        LOG.info(startupMessage);
     }
 
     private static void handler(HttpExchange exchange) throws IOException {
