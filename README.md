@@ -1,6 +1,4 @@
-# JLink example
-
-Use Gradle to create a minimal runtime image using [JLink](https://docs.oracle.com/javase/9/tools/jlink.htm).
+Create minimal runtime image using [Gradle](https://gradle.org/) and [JLink](https://docs.oracle.com/javase/9/tools/jlink.htm).
 
 Build & Run:
 
@@ -13,6 +11,4 @@ PONG
 
 System property 'java.home' is expected to point to a JDK
 
-# LICENSE
-
-MIT © 2018
+_MIT © 2018_
