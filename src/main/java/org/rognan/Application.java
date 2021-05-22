@@ -23,7 +23,7 @@ public class Application {
 
         server.start();
 
-        final String startupMessage = "Application running on port %d powered by %s %s"
+        final String startupMessage = "Application listening on port %d powered by %s %s"
             .formatted(port,
                 System.getProperty("java.vendor"),
                 System.getProperty("java.version"));
