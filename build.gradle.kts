@@ -1,8 +1,7 @@
 plugins {
-  java
-
-  id("com.github.ben-manes.versions")
-  id("net.nemerosa.versioning")
+  id("java")
+  id("com.github.ben-manes.versions") version "0.39.0"
+  id("net.nemerosa.versioning") version "2.15.0"
 }
 
 group = "org.rognan"
