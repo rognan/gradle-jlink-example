@@ -1,3 +1,4 @@
+![Build](https://github.com/rognan/gradle-jlink-example/actions/workflows/code-analysis.yml/badge.svg)
 [![License](https://img.shields.io/badge/License-MIT-blue)](LICENSE)
 
 Create a minimal runtime image using [Gradle](https://gradle.org/) and [JLink](https://docs.oracle.com/javase/9/tools/jlink.htm).
