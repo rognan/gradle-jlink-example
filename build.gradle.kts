@@ -8,8 +8,8 @@ group = "org.rognan"
 version = versioning.info.full
 
 java {
-  targetCompatibility = JavaVersion.toVersion("16")
-  sourceCompatibility = JavaVersion.toVersion("16")
+  targetCompatibility = JavaVersion.toVersion("18")
+  sourceCompatibility = JavaVersion.toVersion("18")
 }
 
 tasks {
