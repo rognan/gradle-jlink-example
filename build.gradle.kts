@@ -6,8 +6,8 @@ group = "org.rognan"
 version = "0.1.0"
 
 java {
-  targetCompatibility = JavaVersion.toVersion("18")
-  sourceCompatibility = JavaVersion.toVersion("18")
+  targetCompatibility = JavaVersion.toVersion("17")
+  sourceCompatibility = JavaVersion.toVersion("17")
 }
 
 tasks {
