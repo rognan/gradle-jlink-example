@@ -20,7 +20,7 @@ tasks.jar {
 
 tasks.register<Exec>("jlink") {
   group = "Build"
-  description = "Generate custom Java runtime image"
+  description = "Generate Java runtime image"
 
   dependsOn("clean", "jar")
 
@@ -28,13 +28,12 @@ tasks.register<Exec>("jlink") {
   val moduleName = "org.rognan.jlink"
   val moduleLaunchPoint = "org.rognan.Application"
 
-  workingDir = file("build")
-
-  commandLine(
-    "$javaHome/bin/jlink", "--module-path", "libs${File.pathSeparatorChar}$javaHome/jmods",
+  commandLine = listOf(
+    "$javaHome/bin/jlink",
+    "--module-path", "$buildDir/libs${File.pathSeparatorChar}$javaHome/jmods",
     "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "2",
     "--add-modules", moduleName,
     "--launcher", "launch=$moduleName/$moduleLaunchPoint",
-    "--output", "image"
+    "--output", "$buildDir/image"
   )
 }
