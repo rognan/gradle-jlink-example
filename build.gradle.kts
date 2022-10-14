@@ -5,16 +5,32 @@ plugins {
 group = "org.rognan"
 version = "0.1.0"
 
+val jvmReleaseTarget = JavaLanguageVersion.of(19)
+val launcher = javaToolchains.launcherFor {
+  languageVersion.set(jvmReleaseTarget)
+}
+val compiler = javaToolchains.compilerFor {
+  languageVersion.set(jvmReleaseTarget)
+}
+
 java {
-  targetCompatibility = JavaVersion.toVersion("17")
-  sourceCompatibility = JavaVersion.toVersion("17")
+  toolchain {
+    languageVersion.set(jvmReleaseTarget)
+  }
+}
+
+tasks.withType<JavaCompile>().configureEach {
+  javaCompiler.set(compiler)
+  options.encoding = "UTF-8"
+  options.isIncremental = true
+  options.compilerArgs = listOf("--enable-preview")
 }
 
 tasks.jar {
-  manifest {
-    attributes(
-      "Main-Class" to "org.rognan.Application"
-    )
+  manifest.attributes["Main-Class"] = "org.rognan.Application"
+
+  from(rootDir) {
+    include("LICENSE")
   }
 }
 
@@ -24,12 +40,13 @@ tasks.register<Exec>("jlink") {
 
   dependsOn("clean", "jar")
 
-  val javaHome = System.getProperty("java.home")
+  val javaHome = launcher.get().metadata.installationPath.asFile.absolutePath
   val moduleName = "org.rognan.jlink"
   val moduleLaunchPoint = "org.rognan.Application"
 
   commandLine = listOf(
     "$javaHome/bin/jlink",
+    "--add-options", "\"--enable-preview\"",
     "--module-path", "$buildDir/libs${File.pathSeparatorChar}$javaHome/jmods",
     "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "2",
     "--add-modules", moduleName,
