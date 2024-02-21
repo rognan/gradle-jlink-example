@@ -7,7 +7,7 @@ version = "0.1.0"
 
 java {
   toolchain {
-    languageVersion.set(JavaLanguageVersion.of(17))
+    languageVersion.set(JavaLanguageVersion.of(21))
   }
 }
 
@@ -33,7 +33,7 @@ tasks.register<Exec>("jlink") {
   commandLine = listOf(
     "$javaHome/bin/jlink",
     "--module-path", "$buildDirectory/libs${File.pathSeparatorChar}$javaHome/jmods",
-    "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "2",
+    "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "zip-9",
     "--add-modules", moduleName,
     "--launcher", "launch=$moduleName/$moduleLaunchPoint",
     "--output", "$buildDirectory/image"
