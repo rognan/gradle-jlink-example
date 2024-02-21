@@ -6,8 +6,9 @@ group = "org.rognan"
 version = "0.1.0"
 
 java {
-  targetCompatibility = JavaVersion.toVersion("17")
-  sourceCompatibility = JavaVersion.toVersion("17")
+  toolchain {
+    languageVersion.set(JavaLanguageVersion.of(17))
+  }
 }
 
 tasks.jar {
@@ -27,13 +28,14 @@ tasks.register<Exec>("jlink") {
   val javaHome = System.getProperty("java.home")
   val moduleName = "org.rognan.jlink"
   val moduleLaunchPoint = "org.rognan.Application"
+  val buildDirectory = layout.buildDirectory.get()
 
   commandLine = listOf(
     "$javaHome/bin/jlink",
-    "--module-path", "$buildDir/libs${File.pathSeparatorChar}$javaHome/jmods",
+    "--module-path", "$buildDirectory/libs${File.pathSeparatorChar}$javaHome/jmods",
     "--strip-debug", "--no-header-files", "--no-man-pages", "--compress", "2",
     "--add-modules", moduleName,
     "--launcher", "launch=$moduleName/$moduleLaunchPoint",
-    "--output", "$buildDir/image"
+    "--output", "$buildDirectory/image"
   )
 }
